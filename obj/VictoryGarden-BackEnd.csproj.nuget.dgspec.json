@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karla\\OneDrive\\Desktop\\Finals\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd.csproj": {}
+    "C:\\Users\\Jake\\class-dev\\Projects\\VictoryGarden-BackEnd-Final\\VictoryGarden-BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karla\\OneDrive\\Desktop\\Finals\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd.csproj": {
+    "C:\\Users\\Jake\\class-dev\\Projects\\VictoryGarden-BackEnd-Final\\VictoryGarden-BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karla\\OneDrive\\Desktop\\Finals\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\Jake\\class-dev\\Projects\\VictoryGarden-BackEnd-Final\\VictoryGarden-BackEnd.csproj",
         "projectName": "VictoryGarden-BackEnd",
-        "projectPath": "C:\\Users\\karla\\OneDrive\\Desktop\\Finals\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd.csproj",
-        "packagesPath": "C:\\Users\\karla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karla\\OneDrive\\Desktop\\Finals\\VictoryGarden-BackEnd\\VictoryGarden-BackEnd\\obj\\",
+        "projectPath": "C:\\Users\\Jake\\class-dev\\Projects\\VictoryGarden-BackEnd-Final\\VictoryGarden-BackEnd.csproj",
+        "packagesPath": "C:\\Users\\Jake\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jake\\class-dev\\Projects\\VictoryGarden-BackEnd-Final\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\karla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jake\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,6 +45,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -69,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
