@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using VictoryGarden_BackEnd.Services;
+
 namespace VictoryGarden_BackEnd
 {
     public class Program
@@ -12,6 +15,11 @@ namespace VictoryGarden_BackEnd
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<VictoryGardenDbContext>(options =>
+            {
+                options.UseSqlServer("Server=localhost;Database=VictoryGardenDb;Trusted_Connection=True;");
+            });
 
             var app = builder.Build();
 
