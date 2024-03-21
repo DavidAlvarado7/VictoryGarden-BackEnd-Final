@@ -31,6 +31,7 @@ namespace VictoryGarden_BackEnd
             {
                 options.UseSqlServer("Server=localhost;Database=VictoryGardenDb;Trusted_Connection=True;");
             });
+            builder.Services.AddHttpClient<TrefleService>(client => {client.BaseAddress = new Uri("https://trefle.io/api/v1/plants/");});
 
             var app = builder.Build();
 
