@@ -11,19 +11,47 @@ namespace VictoryGarden_BackEnd.Controllers
     [ApiController]
     public class PlantsController : ControllerBase
     {
+        private readonly TrefleService _trefleService;
         private readonly VictoryGardenDbContext _victoryGardenDbContext;
 
-        public PlantsController(VictoryGardenDbContext victoryGardenDbContext)
+        public PlantsController(VictoryGardenDbContext victoryGardenDbContext, TrefleService trefleService)
         {
+            _trefleService = trefleService;
             _victoryGardenDbContext = victoryGardenDbContext;
         }
 
         // GET: api/<PlantsController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
+            // This code gets the Plants info and the Trefle info and combines them into a dictionary so the front end can use everything at once.
+            
             List<Plant> plantsList = _victoryGardenDbContext.Plants.ToList();
-            return Ok(plantsList);
+
+            var trefleUIs = new List<TrefleUI>();
+            foreach (var plant in plantsList)
+            {
+                var trefleUI = await _trefleService.GetTrefleData(plant.TrefleID);
+                trefleUIs.Add(trefleUI);
+            }
+
+        var plantDictionary = plantsList.ToDictionary(plant => plant.TrefleID);
+            var results = trefleUIs.Where(trefle => trefle != null).Select(trefle =>
+            {
+                var plantInfo = plantDictionary.GetValueOrDefault(trefle.id);
+                return new
+                {
+                    Id = plantInfo.ID,
+                    PlantName = plantInfo.PlantName,
+                    Quantity = plantInfo.Quantity,
+                    CommonName = trefle.common_name,
+                    ScientificName = trefle.scientific_name,
+                    ImageURL = trefle.image_url,
+                    Vegetable = trefle.vegetable
+                };
+            });
+
+            return Ok(results);
         }
 
         // GET api/<PlantsController>/5

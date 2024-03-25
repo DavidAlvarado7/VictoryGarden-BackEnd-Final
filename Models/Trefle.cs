@@ -20,7 +20,7 @@
         public string family_common_name { get; set; }
         public int genus_id { get; set; }
         public string observations { get; set; }
-        public bool vegetable { get; set; }
+        public bool? vegetable { get; set; }
         public Links links { get; set; }
         public Main_Species main_species { get; set; }
         public Genus genus { get; set; }
@@ -55,13 +55,13 @@
         public string family_common_name { get; set; }
         public int genus_id { get; set; }
         public string observations { get; set; }
-        public bool vegetable { get; set; }
+        public bool? vegetable { get; set; }
         public object image_url { get; set; }
         public string genus { get; set; }
         public string family { get; set; }
         public object duration { get; set; }
         public object edible_part { get; set; }
-        public bool edible { get; set; }
+        public bool? edible { get; set; }
         public Images images { get; set; }
         public Common_Names common_names { get; set; }
         public Distribution distribution { get; set; }
