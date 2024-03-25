@@ -22,8 +22,7 @@ namespace VictoryGarden_BackEnd.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<Plants> plantsList = new List<Plants>();
-            plantsList = _victoryGardenDbContext.Plants.ToList();
+            List<Plant> plantsList = _victoryGardenDbContext.Plants.ToList();
             return Ok(plantsList);
         }
 
@@ -33,23 +32,24 @@ namespace VictoryGarden_BackEnd.Controllers
         {
             var plant = _victoryGardenDbContext.Plants.Find(id);
 
-            if (_victoryGardenDbContext.Plants.Contains(plant))
+            // returning the single object here instead of a string so angular can use it
+            if (plant != null)
             {
-                return Ok($"You provided an ID of {id} - {plant.PlantName}.");
+                return Ok(plant);
             }
 
             return NotFound();
         }
 
-        // PUT api/<Plot1Controller>/5
+        // PUT api/<PlantsController>/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] int id, [FromBody] int seedQuantity)
+        public IActionResult Put([FromRoute] int id, [FromBody] Plant putPlant)
         {
             var plant = _victoryGardenDbContext.Plants.Find(id);
 
-            if (_victoryGardenDbContext.Plants.Contains(plant))
+            if (plant != null)
             {
-                plant.Quantity = seedQuantity;
+                plant.Quantity = putPlant.Quantity;
 
                 _victoryGardenDbContext.Plants.Update(plant);
                 _victoryGardenDbContext.SaveChanges();
