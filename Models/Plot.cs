@@ -2,12 +2,13 @@
 
 namespace VictoryGarden_BackEnd.Models
 {
-    public class Plot1
+    public class Plot
     {
         [Key]
-        public int ID { get; set; }
-        public int PlantID { get; set; }
+        public int Id { get; set; }
+        public int PlantId { get; set; }
         public string PlantName { get; set; }
         public int PlotSpace { get; set; }
+        public int PlotId { get; set; }
     }
 }
