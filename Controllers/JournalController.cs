@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using VictoryGarden_BackEnd.Models;
 using VictoryGarden_BackEnd.Services;
 
@@ -33,9 +32,9 @@ namespace VictoryGarden_BackEnd.Controllers
         {
             var entry = _victoryGardenDbContext.Journal.Find(id);
 
-            if (_victoryGardenDbContext.Journal.Contains(entry))
+            if (entry != null)
             {
-                return Ok($"You provided an ID of {id}. It says, \"{entry.Notes}\"");
+                return Ok(entry.Notes);
             }
 
             return NotFound();
