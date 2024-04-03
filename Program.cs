@@ -17,7 +17,8 @@ namespace VictoryGarden_BackEnd
                 options.AddDefaultPolicy(
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:4200", // might need to update
+                        policy.WithOrigins("http://localhost:4200",
+                                            "https://jolly-island-03229f60f.5.azurestaticapps.net",// might need to update
                                             "https://MyApp.com/api")
                         .AllowAnyMethod() // method in this context means GET, POST, PUT, DELETE, etc. 
                         .AllowAnyHeader();
@@ -29,19 +30,22 @@ namespace VictoryGarden_BackEnd
 
             builder.Services.AddDbContext<VictoryGardenDbContext>(options =>
             {
-                options.UseSqlServer("Server=localhost;Database=VictoryGardenDb;Trusted_Connection=True;");
+                // ConnectionStrings:DefaultConnection
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
             });
             builder.Services.AddHttpClient<TrefleService>(client => {client.BaseAddress = new Uri("https://trefle.io/api/v1/plants/");});
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
 
+            app.UseDeveloperExceptionPage();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI();
+            
             app.UseCors();
 
             app.UseHttpsRedirection();
